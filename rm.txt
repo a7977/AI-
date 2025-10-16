@@ -1,0 +1,21 @@
+启动api服务器——这里可以看到所有可用的接口
+python api_server.py
+启动前端
+python start_frontend.py
+
+api文档
+http://localhost:8000/docs
+
+
+运行系统  python main.py
+
+
+ReDoc文档: http://localhost:8000/redoc
+
+健康检查: http://localhost:8000/health
+
+用户推荐: http://localhost:8000/recommend/user_1
+
+用户列表: http://localhost:8000/users
+
+广告列表: http://localhost:8000/ads

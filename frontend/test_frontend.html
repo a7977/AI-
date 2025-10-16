@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>前端测试</title>
+</head>
+<body>
+    <h1>前端API测试</h1>
+    <button onclick="testAPIs()">测试所有API</button>
+    <div id="results"></div>
+
+    <script>
+        async function testAPIs() {
+            const baseUrl = 'http://localhost:8000';
+            const endpoints = ['/health', '/users', '/ads'];
+            const results = document.getElementById('results');
+
+            results.innerHTML = '<h2>测试结果:</h2>';
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(baseUrl + endpoint);
+                    const data = await response.json();
+                    results.innerHTML += `
+                        <div style="color: green; margin: 10px 0;">
+                            ✅ ${endpoint}: 成功<br>
+                            状态: ${response.status}<br>
+                            数据: ${JSON.stringify(data)}
+                        </div>
+                    `;
+                } catch (error) {
+                    results.innerHTML += `
+                        <div style="color: red; margin: 10px 0;">
+                            ❌ ${endpoint}: 失败<br>
+                            错误: ${error.message}
+                        </div>
+                    `;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
